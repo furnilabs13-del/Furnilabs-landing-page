@@ -28,7 +28,15 @@ async function appendToSheet(rowData: (string | number)[]) {
 
   const sheets = google.sheets({ version: 'v4', auth });
 
-  // Read column A to find the last serial number and next empty row
+  // Get sheet ID (tab ID, not spreadsheet ID)
+  const spreadsheet = await sheets.spreadsheets.get({
+    spreadsheetId: SHEET_ID,
+  });
+  const sheetTabId = spreadsheet.data.sheets?.find(
+    (s) => s.properties?.title === SHEET_NAME
+  )?.properties?.sheetId ?? 0;
+
+  // Read column A to find last serial number and next empty row
   const existing = await sheets.spreadsheets.values.get({
     spreadsheetId: SHEET_ID,
     range: `${SHEET_NAME}!A:A`,
@@ -36,27 +44,56 @@ async function appendToSheet(rowData: (string | number)[]) {
 
   const rows = existing.data.values || [];
 
-  // rows[0] is the header ("Serial number"), data starts at rows[1]
-  // Find the last numeric serial in column A and increment
   let lastSerial = 0;
   for (let i = 1; i < rows.length; i++) {
     const val = parseInt(rows[i][0]);
     if (!isNaN(val) && val > lastSerial) lastSerial = val;
   }
   const serialNumber = lastSerial + 1;
+  const nextRow = rows.length + 1;       // 1-indexed row number in sheet
+  const rowIndex = nextRow - 1;          // 0-indexed for batchUpdate
 
-  // Next empty row = total rows read + 1 (1-indexed)
-  const nextRow = rows.length + 1;
+  // Column F = index 5 (0-indexed) = Status column
+  const STATUS_COL = 5;
 
+  // Step 1 — Write the row values
   const newRow = [serialNumber, ...rowData];
-
-  // Write directly to the exact next empty row to avoid appending in wrong place
   await sheets.spreadsheets.values.update({
     spreadsheetId: SHEET_ID,
     range: `${SHEET_NAME}!A${nextRow}:H${nextRow}`,
     valueInputOption: 'USER_ENTERED',
+    requestBody: { values: [newRow] },
+  });
+
+  // Step 2 — Apply dropdown data validation to the Status cell (column F)
+  await sheets.spreadsheets.batchUpdate({
+    spreadsheetId: SHEET_ID,
     requestBody: {
-      values: [newRow],
+      requests: [
+        {
+          setDataValidation: {
+            range: {
+              sheetId: sheetTabId,
+              startRowIndex: rowIndex,
+              endRowIndex: rowIndex + 1,
+              startColumnIndex: STATUS_COL,
+              endColumnIndex: STATUS_COL + 1,
+            },
+            rule: {
+              condition: {
+                type: 'ONE_OF_LIST',
+                values: [
+                  { userEnteredValue: 'not converted' },
+                  { userEnteredValue: 'converted' },
+                  { userEnteredValue: 'partial' },
+                ],
+              },
+              showCustomUi: true,   // shows as dropdown in the cell
+              strict: true,         // only allows values from the list
+            },
+          },
+        },
+      ],
     },
   });
 }
@@ -115,7 +152,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       phone || '',
       email,
       '',               // Store Name — not collected in form
-      'Not Converted',  // Status default
+      'not converted',  // Status default — matches dropdown option exactly
       message,          // Reason from message
       '',               // Revenue — filled manually
     ]);
