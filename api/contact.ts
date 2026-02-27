@@ -28,21 +28,32 @@ async function appendToSheet(rowData: (string | number)[]) {
 
   const sheets = google.sheets({ version: 'v4', auth });
 
-  // Get current number of rows to calculate serial number
+  // Read column A to find the last serial number and next empty row
   const existing = await sheets.spreadsheets.values.get({
     spreadsheetId: SHEET_ID,
     range: `${SHEET_NAME}!A:A`,
   });
 
   const rows = existing.data.values || [];
-  // rows[0] is the header row, so actual data rows = rows.length - 1
-  const serialNumber = rows.length; // header = row 1, so next serial = rows.length
+
+  // rows[0] is the header ("Serial number"), data starts at rows[1]
+  // Find the last numeric serial in column A and increment
+  let lastSerial = 0;
+  for (let i = 1; i < rows.length; i++) {
+    const val = parseInt(rows[i][0]);
+    if (!isNaN(val) && val > lastSerial) lastSerial = val;
+  }
+  const serialNumber = lastSerial + 1;
+
+  // Next empty row = total rows read + 1 (1-indexed)
+  const nextRow = rows.length + 1;
 
   const newRow = [serialNumber, ...rowData];
 
-  await sheets.spreadsheets.values.append({
+  // Write directly to the exact next empty row to avoid appending in wrong place
+  await sheets.spreadsheets.values.update({
     spreadsheetId: SHEET_ID,
-    range: `${SHEET_NAME}!A:H`,
+    range: `${SHEET_NAME}!A${nextRow}:H${nextRow}`,
     valueInputOption: 'USER_ENTERED',
     requestBody: {
       values: [newRow],
