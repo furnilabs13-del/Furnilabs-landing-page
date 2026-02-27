@@ -22,9 +22,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
-  // Hardcoded credentials - REPLACE THESE WITH YOUR ACTUAL CREDENTIALS
-  const EMAIL_USER = 'furnilabs13@gmail.com'; // Using your email as sender
-  const EMAIL_PASS = 'YOUR_GMAIL_APP_PASSWORD'; // Replace with your actual App Password
+  const EMAIL_USER = 'mithudon7048@gmail.com';
+  const EMAIL_PASS = 'jkfe ydzx lnnb btct';
 
   const safeName = escapeHtml(name);
   const safeEmail = escapeHtml(email);
