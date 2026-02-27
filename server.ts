@@ -4,6 +4,11 @@ import { createServer as createViteServer } from 'vite';
 import nodemailer from 'nodemailer';
 import { rateLimit } from 'express-rate-limit';
 import helmet from 'helmet';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 async function startServer() {
   const app = express();
@@ -108,8 +113,16 @@ Message : ${message}
     });
     app.use(vite.middlewares);
   } else {
-    // Production static file serving (if needed later)
-    // app.use(express.static('dist'));
+    // Production static file serving
+    // This allows the server to serve the built frontend if run directly (e.g. on Render/Heroku)
+    // Note: On Vercel, this file is typically not used for static serving, but it's good practice.
+    const distPath = path.resolve(__dirname, 'dist');
+    app.use(express.static(distPath));
+    
+    // SPA Fallback for production
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(distPath, 'index.html'));
+    });
   }
 
   app.listen(PORT, '0.0.0.0', () => {
