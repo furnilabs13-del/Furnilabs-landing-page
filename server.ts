@@ -37,11 +37,9 @@ async function startServer() {
       return res.status(400).json({ error: 'Missing required fields' });
     }
 
-    // Check for missing credentials before attempting to send
-    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-      console.error('Email configuration error: EMAIL_USER or EMAIL_PASS is missing.');
-      return res.status(500).json({ error: 'Server configuration error. Please contact support.' });
-    }
+    // Hardcoded credentials - REPLACE THESE WITH YOUR ACTUAL CREDENTIALS
+    const EMAIL_USER = 'furnilabs13@gmail.com';
+    const EMAIL_PASS = 'YOUR_GMAIL_APP_PASSWORD'; // Replace with your actual App Password
 
     // Helper to escape HTML characters
     const escapeHtml = (unsafe: string) => {
@@ -59,23 +57,22 @@ async function startServer() {
     const safeMessage = escapeHtml(message).replace(/\n/g, '<br/>');
 
     try {
-      // Configure transporter with environment variables
-      // For Gmail, you might need an App Password if 2FA is enabled
+      // Configure transporter with hardcoded credentials
       const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: process.env.EMAIL_USER, // Your email address
-          pass: process.env.EMAIL_PASS  // Your email password or App Password
+          user: EMAIL_USER,
+          pass: EMAIL_PASS
         }
       });
 
-      // Get recipients from environment variable or default to the list
-      const recipients = process.env.RECIPIENT_EMAILS || 'shivtayal80@gmail.com, furnilabs13@gmail.com, parvjindal4@gmail.com';
+      // Hardcoded recipients
+      const recipients = 'shivtayal80@gmail.com, furnilabs13@gmail.com, parvjindal4@gmail.com';
       console.log(`Attempting to send email to: ${recipients}`);
 
       const mailOptions = {
-        from: process.env.EMAIL_USER, // Sender address
-        to: recipients,               // Multiple receivers (comma-separated)
+        from: EMAIL_USER, // Sender address
+        to: recipients,   // Multiple receivers (comma-separated)
         subject: `SALES ENQUIRY`,
         text: `
 Name : ${name}
