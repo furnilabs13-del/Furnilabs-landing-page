@@ -131,13 +131,13 @@ const HowItWorks = () => {
     {
       icon: Palette,
       number: "2",
-      title: "Choose furniture style",
-      description: "Select furniture types or styles."
+      title: "Choose furniture",
+      description: "Select furniture and style."
     },
     {
       icon: Sparkles,
       number: "3",
-      title: "Generate AI staging",
+      title: "Generate virtual staging",
       description: "Get photorealistic furnished rooms instantly."
     }
   ];
@@ -239,32 +239,32 @@ const AboutSection = () => {
             transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
             className="w-full md:w-1/2"
           >
-            <motion.span 
+            <motion.span
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ delay: 0.4 }}
               className="text-stone-500 text-sm tracking-widest uppercase block mb-4"
             >
-              AI-Powered Design
+              For Store Owners
             </motion.span>
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ delay: 0.5 }}
               className="text-4xl md:text-5xl font-serif mb-6 leading-tight"
             >
-              Visualize your dream space instantly.
+              Turn browsers into buyers.
             </motion.h2>
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ delay: 0.6 }}
               className="text-stone-600 text-lg mb-8 leading-relaxed"
             >
-              FurniLabs transforms your room photos into fully furnished masterpieces. Simply upload an image of your space, and our advanced AI will reimagine it with the furniture you've always wanted. No more guessing—see exactly how it looks before you buy.
+              FurniLabs transforms your sales process. Instead of customers imagining how your furniture looks in their homes, show them instantly. Your salespeople can generate photorealistic visualizations in seconds—no expensive 3D renders, no long wait times. Just real results that close sales.
             </motion.p>
             <div className="grid grid-cols-2 gap-8 mb-8">
               <motion.div
@@ -273,8 +273,8 @@ const AboutSection = () => {
                 viewport={{ once: false }}
                 transition={{ delay: 0.7 }}
               >
-                <h4 className="font-serif text-2xl mb-2">100%</h4>
-                <p className="text-sm text-stone-500">Realistic Rendering</p>
+                <h4 className="font-serif text-2xl mb-2">Seconds</h4>
+                <p className="text-sm text-stone-500">Not Hours or Days</p>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -282,8 +282,8 @@ const AboutSection = () => {
                 viewport={{ once: false }}
                 transition={{ delay: 0.8 }}
               >
-                <h4 className="font-serif text-2xl mb-2">Instant</h4>
-                <p className="text-sm text-stone-500">AI Transformation</p>
+                <h4 className="font-serif text-2xl mb-2">Your Brand</h4>
+                <p className="text-sm text-stone-500">Fully Integrated</p>
               </motion.div>
             </div>
 
@@ -298,18 +298,18 @@ const UseCases = () => {
   const cases = [
     {
       icon: Sofa,
-      title: "Furniture brands",
-      description: "Generate lifestyle product photos and create catalog visuals instantly"
+      title: "Catalog Creation",
+      description: "Create stunning product catalogs instantly. Show your furniture in real room settings without expensive photoshoots."
     },
     {
       icon: Building2,
-      title: "Interior designers",
-      description: "Preview furniture layouts for clients with photorealistic renderings"
+      title: "In-Store Experience",
+      description: "Salespeople can instantly show customers how furniture fits in their homes. Reduce purchase hesitation with photorealistic visualizations."
     },
     {
       icon: Home,
-      title: "Real estate",
-      description: "Virtually stage empty properties to increase buyer interest"
+      title: "Your Brand, Your Tool",
+      description: "White-label integration means your customers see your store's branding throughout. They'll think it's your tool—because it is."
     }
   ];
 
@@ -324,13 +324,13 @@ const UseCases = () => {
           className="text-center mb-20"
         >
           <span className="text-stone-500 text-sm tracking-widest uppercase block mb-4">
-            Industry Solutions
+            Built for Furniture Stores
           </span>
           <h2 className="text-4xl md:text-5xl font-serif mb-6 leading-tight">
-            Use cases
+            How Furniture Stores Win
           </h2>
           <p className="text-stone-600 text-lg max-w-2xl mx-auto">
-            Perfect for professionals across various industries.
+            Stop competing on price. Compete on experience. FurniLabs gives you the tools to visualize, convince, and sell.
           </p>
         </motion.div>
 
@@ -365,22 +365,30 @@ const UseCases = () => {
 };
 
 const Results = () => {
-  const results = [
+  const examples = [
     {
-      src: "https://images.unsplash.com/photo-1586023566979-23e80371ac69?q=80&w=800&auto=format&fit=crop",
-      title: "Modern Living Room"
+      title: "Living Room Transformation",
+      images: [
+        { type: "input", src: "https://images.unsplash.com/photo-1536376072261-38c75010e6c9?q=80&w=400&auto=format&fit=crop", label: "Original Room" },
+        { type: "furniture", src: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=400&auto=format&fit=crop", label: "Furniture Selection" },
+        { type: "result", src: "https://images.unsplash.com/photo-1586023566979-23e80371ac69?q=80&w=400&auto=format&fit=crop", label: "AI Result" }
+      ]
     },
     {
-      src: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=800&auto=format&fit=crop",
-      title: "Contemporary Bedroom"
+      title: "Bedroom Refresh",
+      images: [
+        { type: "input", src: "https://images.unsplash.com/photo-1540932239986-310128078f3f?q=80&w=400&auto=format&fit=crop", label: "Original Room" },
+        { type: "furniture", src: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=400&auto=format&fit=crop", label: "Furniture Selection" },
+        { type: "result", src: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=400&auto=format&fit=crop", label: "AI Result" }
+      ]
     },
     {
-      src: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=800&auto=format&fit=crop",
-      title: "Elegant Office"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1578500494198-246f612d03b3?q=80&w=800&auto=format&fit=crop",
-      title: "Minimalist Study"
+      title: "Office Space",
+      images: [
+        { type: "input", src: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=400&auto=format&fit=crop", label: "Original Room" },
+        { type: "furniture", src: "https://images.unsplash.com/photo-1578500494198-246f612d03b3?q=80&w=400&auto=format&fit=crop", label: "Furniture Selection" },
+        { type: "result", src: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?q=80&w=400&auto=format&fit=crop", label: "AI Result" }
+      ]
     }
   ];
 
@@ -401,29 +409,61 @@ const Results = () => {
             See the results
           </h2>
           <p className="text-stone-600 text-lg max-w-2xl mx-auto">
-            Experience the power of AI-generated furniture staging in real rooms.
+            From empty room to stunning showcase in seconds.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {results.map((result, index) => (
+        <div className="space-y-16">
+          {examples.map((example, exIndex) => (
             <motion.div
-              key={index}
+              key={exIndex}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
-              transition={{ delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-lg aspect-square"
+              transition={{ delay: exIndex * 0.2 }}
+              className="space-y-6"
             >
-              <img
-                src={result.src}
-                alt={result.title}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors duration-300 flex items-end p-6">
-                <h3 className="text-white font-serif text-lg font-medium">
-                  {result.title}
-                </h3>
+              <h3 className="text-2xl font-serif font-medium text-center text-stone-900">
+                {example.title}
+              </h3>
+
+              <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
+                {example.images.map((image, imgIndex) => (
+                  <div key={imgIndex} className="flex items-center gap-4 md:gap-6">
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: false }}
+                      transition={{ delay: exIndex * 0.2 + imgIndex * 0.1 }}
+                      className="group relative overflow-hidden rounded-lg flex-1 md:flex-none"
+                    >
+                      <img
+                        src={image.src}
+                        alt={image.label}
+                        className="w-full h-48 md:h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-4">
+                        <p className="text-white text-sm font-medium">
+                          {image.label}
+                        </p>
+                      </div>
+                    </motion.div>
+
+                    {imgIndex < example.images.length - 1 && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: false }}
+                        transition={{ delay: exIndex * 0.2 + imgIndex * 0.1 + 0.1 }}
+                        className="hidden md:flex items-center justify-center flex-shrink-0"
+                      >
+                        <div className="bg-stone-200 rounded-full p-2">
+                          <ArrowRight size={20} className="text-stone-600" />
+                        </div>
+                      </motion.div>
+                    )}
+                  </div>
+                ))}
               </div>
             </motion.div>
           ))}
