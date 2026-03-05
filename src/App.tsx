@@ -367,100 +367,134 @@ const UseCases = () => {
 const Results = () => {
   const examples = [
     {
-      title: "Living Room Transformation",
+      title: "Example 1",
+      subtitle: "Modern Living Room Transformation",
       images: [
-        { type: "input", src: "https://images.unsplash.com/photo-1536376072261-38c75010e6c9?q=80&w=400&auto=format&fit=crop", label: "Original Room" },
-        { type: "furniture", src: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=400&auto=format&fit=crop", label: "Furniture Selection" },
-        { type: "result", src: "https://images.unsplash.com/photo-1586023566979-23e80371ac69?q=80&w=400&auto=format&fit=crop", label: "AI Result" }
+        { type: "input", src: "/SiteExamples/Example 2/Input/img5 copy.jpg", label: "Original Room" },
+        { type: "furniture", src: "/SiteExamples/Example 2/Furniture/img26 copy.jpg", label: "Furniture Style" },
+        { type: "result", src: "/SiteExamples/Example 2/Output/render-3qyMmoYMpgMtiwvrAt12-v2-1772707518769.png", label: "AI Result" }
       ]
     },
     {
-      title: "Bedroom Refresh",
+      title: "Example 2",
+      subtitle: "Contemporary Interior Design",
       images: [
-        { type: "input", src: "https://images.unsplash.com/photo-1540932239986-310128078f3f?q=80&w=400&auto=format&fit=crop", label: "Original Room" },
-        { type: "furniture", src: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=400&auto=format&fit=crop", label: "Furniture Selection" },
-        { type: "result", src: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=400&auto=format&fit=crop", label: "AI Result" }
+        { type: "input", src: "/SiteExamples/Example 3/Input/360_F_309153899_e6oWpcNBV44DEx52vikvw9a5XNlw7pVb copy.jpg", label: "Original Room" },
+        { type: "furniture", src: "/SiteExamples/Example 3/Furniture/img88 copy.jpg", label: "Furniture Style" },
+        { type: "result", src: "/SiteExamples/Example 3/Output/render-zFARi8fqif79A8xAEfbQ-v1-1772706990866.png", label: "AI Result" }
       ]
     },
     {
-      title: "Office Space",
+      title: "Example 3",
+      subtitle: "Elegant Space Styling",
       images: [
-        { type: "input", src: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=400&auto=format&fit=crop", label: "Original Room" },
-        { type: "furniture", src: "https://images.unsplash.com/photo-1578500494198-246f612d03b3?q=80&w=400&auto=format&fit=crop", label: "Furniture Selection" },
-        { type: "result", src: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?q=80&w=400&auto=format&fit=crop", label: "AI Result" }
+        { type: "input", src: "/SiteExamples/Example 1/Input/img11 copy.jpg", label: "Original Room" },
+        { type: "furniture", src: "/SiteExamples/Example 1/Furniture/img23 copy.jpg", label: "Furniture Style" },
+        { type: "result", src: "/SiteExamples/Example 3/Output/furnilab-render-1772707227372.png", label: "AI Result" }
       ]
     }
   ];
 
   return (
-    <section id="results" className="py-24 bg-white overflow-hidden">
-      <div className="container mx-auto px-6">
+    <section id="results" className="py-20 md:py-32 bg-gradient-to-b from-white to-stone-50 overflow-hidden">
+      <div className="container mx-auto px-4 md:px-6">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-16 md:mb-24"
         >
-          <span className="text-stone-500 text-sm tracking-widest uppercase block mb-4">
-            Gallery
+          <span className="text-stone-500 text-xs md:text-sm tracking-widest uppercase block mb-3 md:mb-4">
+            Real Examples
           </span>
-          <h2 className="text-4xl md:text-5xl font-serif mb-6 leading-tight">
-            See the results
+          <h2 className="text-3xl md:text-5xl font-serif font-medium mb-4 md:mb-6 leading-tight">
+            Transform Spaces in Seconds
           </h2>
-          <p className="text-stone-600 text-lg max-w-2xl mx-auto">
-            From empty room to stunning showcase in seconds.
+          <p className="text-stone-600 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+            See how our AI brings empty rooms to life with stunning furniture visualizations.
           </p>
         </motion.div>
 
-        <div className="space-y-16">
+        {/* Examples Grid */}
+        <div className="space-y-16 md:space-y-24">
           {examples.map((example, exIndex) => (
             <motion.div
               key={exIndex}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
-              transition={{ delay: exIndex * 0.2 }}
-              className="space-y-6"
+              viewport={{ once: false, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: exIndex * 0.15 }}
+              className="space-y-6 md:space-y-8"
             >
-              <h3 className="text-2xl font-serif font-medium text-center text-stone-900">
-                {example.title}
-              </h3>
+              {/* Example Title */}
+              <div className="text-center space-y-2">
+                <h3 className="text-2xl md:text-3xl font-serif font-medium text-stone-900">
+                  {example.title}
+                </h3>
+                <p className="text-stone-500 text-sm md:text-base">
+                  {example.subtitle}
+                </p>
+              </div>
 
-              <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
+              {/* Image Carousel - Responsive Layout */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8">
                 {example.images.map((image, imgIndex) => (
-                  <div key={imgIndex} className="flex items-center gap-4 md:gap-6">
+                  <div key={imgIndex} className="flex items-center w-full sm:w-auto gap-3 sm:gap-4 md:gap-6">
+                    {/* Image Card */}
                     <motion.div
-                      initial={{ opacity: 0, scale: 0.95 }}
+                      initial={{ opacity: 0, scale: 0.9 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: false }}
-                      transition={{ delay: exIndex * 0.2 + imgIndex * 0.1 }}
-                      className="group relative overflow-hidden rounded-lg flex-1 md:flex-none"
+                      transition={{ delay: exIndex * 0.15 + imgIndex * 0.1, duration: 0.5 }}
+                      className="group relative overflow-hidden rounded-xl sm:rounded-2xl flex-1 sm:flex-none shadow-lg hover:shadow-2xl transition-shadow duration-300"
                     >
-                      <img
-                        src={image.src}
-                        alt={image.label}
-                        className="w-full h-48 md:h-64 object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-4">
-                        <p className="text-white text-sm font-medium">
+                      <div className="relative w-full pt-[100%] sm:w-48 sm:h-64 md:w-56 md:h-72 lg:w-64 lg:h-80 sm:pt-0">
+                        <img
+                          src={image.src}
+                          alt={image.label}
+                          className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                        />
+                        {/* Gradient Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                      </div>
+
+                      {/* Label Badge */}
+                      <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4">
+                        <span className="inline-block bg-white/95 backdrop-blur-sm text-stone-900 text-xs md:text-sm font-medium px-3 md:px-4 py-1.5 md:py-2 rounded-full">
                           {image.label}
-                        </p>
+                        </span>
+                      </div>
+
+                      {/* Step Number */}
+                      <div className="absolute top-3 md:top-4 right-3 md:right-4 bg-stone-900/80 backdrop-blur-sm text-white w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-xs md:text-sm font-semibold">
+                        {imgIndex + 1}
                       </div>
                     </motion.div>
 
+                    {/* Arrow Separator */}
                     {imgIndex < example.images.length - 1 && (
                       <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: false }}
-                        transition={{ delay: exIndex * 0.2 + imgIndex * 0.1 + 0.1 }}
-                        className="hidden md:flex items-center justify-center flex-shrink-0"
+                        transition={{ delay: exIndex * 0.15 + imgIndex * 0.1 + 0.08, duration: 0.5 }}
+                        className="flex-shrink-0 hidden sm:flex items-center justify-center"
                       >
-                        <div className="bg-stone-200 rounded-full p-2">
-                          <ArrowRight size={20} className="text-stone-600" />
+                        <div className="bg-stone-200 hover:bg-stone-300 transition-colors duration-300 rounded-full p-2.5 md:p-3">
+                          <ArrowRight size={18} className="text-stone-700 md:block" strokeWidth={2.5} />
                         </div>
                       </motion.div>
+                    )}
+
+                    {/* Mobile Arrow - Below Image */}
+                    {imgIndex < example.images.length - 1 && (
+                      <div className="sm:hidden w-full flex justify-center py-2">
+                        <div className="bg-stone-200 rounded-full p-2 rotate-90">
+                          <ArrowRight size={16} className="text-stone-700" strokeWidth={2.5} />
+                        </div>
+                      </div>
                     )}
                   </div>
                 ))}
@@ -468,6 +502,23 @@ const Results = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          className="mt-20 md:mt-28 text-center"
+        >
+          <p className="text-stone-600 text-sm md:text-base mb-6">
+            Ready to see your furniture in action?
+          </p>
+          <a href="#try-now" className="inline-flex items-center space-x-2 bg-stone-900 hover:bg-stone-800 text-white px-6 md:px-8 py-3 md:py-4 rounded-full transition-colors duration-300 group text-sm md:text-base font-medium">
+            <span>Try FurniLabs Now</span>
+            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+          </a>
+        </motion.div>
       </div>
     </section>
   );
