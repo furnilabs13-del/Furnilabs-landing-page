@@ -509,27 +509,27 @@ const Results = () => {
       title: "Example 1",
       subtitle: "Modern Living Room Transformation",
       images: [
-        { type: "input", src: "/SiteExamples/Example 2/Input/img5copy.jpg", label: "Original Room" },
-        { type: "furniture", src: "/SiteExamples/Example 2/Furniture/img26copy.jpg", label: "Furniture Style" },
-        { type: "result", src: "/SiteExamples/Example 2/Output/render-3qyMmoYMpgMtiwvrAt12-v2-1772707518769.png", label: "Result" }
+        { type: "input", src: "/SiteExamples/eg1_input.jpg", label: "Original Room" },
+        { type: "furniture", src: "/SiteExamples/eg1_Furniture.jpg", label: "Furniture Style" },
+        { type: "result", src: "/SiteExamples/eg1_output.png", label: "Result" }
       ]
     },
     {
       title: "Example 2",
       subtitle: "Contemporary Interior Design",
       images: [
-        { type: "input", src: "/SiteExamples/Example 3/Input/img309copy.jpg", label: "Original Room" },
-        { type: "furniture", src: "/SiteExamples/Example 3/Furniture/img88copy.jpg", label: "Furniture Style" },
-        { type: "result", src: "/SiteExamples/Example 3/Output/render-zFARi8fqif79A8xAEfbQ-v1-1772706990866.png", label: "Result" }
+        { type: "input", src: "/SiteExamples/eg2_input.jpg", label: "Original Room" },
+        { type: "furniture", src: "/SiteExamples/eg2_furniture.jpg", label: "Furniture Style" },
+        { type: "result", src: "/SiteExamples/eg2_output.png", label: "Result" }
       ]
     },
     {
       title: "Example 3",
       subtitle: "Elegant Space Styling",
       images: [
-        { type: "input", src: "/SiteExamples/Example 1/Input/img11copy.jpg", label: "Original Room" },
-        { type: "furniture", src: "/SiteExamples/Example 1/Furniture/img23copy.jpg", label: "Furniture Style" },
-        { type: "result", src: "/SiteExamples/Example 3/Output/furnilab-render-1772707227372.png", label: "Result" }
+        { type: "input", src: "/SiteExamples/eg3_input.jpg", label: "Original Room" },
+        { type: "furniture", src: "/SiteExamples/eg3_furniture.jpg", label: "Furniture Style" },
+        { type: "result", src: "/SiteExamples/eg3_output.png", label: "Result" }
       ]
     }
   ];
@@ -961,5 +961,3 @@ export default function App() {
     </div>
   );
 }
-
-
