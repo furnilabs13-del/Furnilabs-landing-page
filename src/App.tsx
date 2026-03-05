@@ -504,32 +504,34 @@ const ResultsCarousel = ({ example, exIndex }: { example: any, exIndex: number }
 };
 
 const Results = () => {
+  const storageUrl = "https://cswxefuxrxyhuksjvahe.supabase.co/storage/v1/object/public/site-images";
+
   const examples = [
     {
       title: "Example 1",
       subtitle: "Modern Living Room Transformation",
       images: [
-        { type: "input", src: "/SiteExamples/eg1_input.jpg", label: "Original Room" },
-        { type: "furniture", src: "/SiteExamples/eg1_Furniture.jpg", label: "Furniture Style" },
-        { type: "result", src: "/SiteExamples/eg1_output.png", label: "Result" }
+        { type: "input", src: `${storageUrl}/eg1_input.jpg`, label: "Original Room" },
+        { type: "furniture", src: `${storageUrl}/eg1_Furniture.jpg`, label: "Furniture Style" },
+        { type: "result", src: `${storageUrl}/eg1_output.png`, label: "Result" }
       ]
     },
     {
       title: "Example 2",
       subtitle: "Contemporary Interior Design",
       images: [
-        { type: "input", src: "/SiteExamples/eg2_input.jpg", label: "Original Room" },
-        { type: "furniture", src: "/SiteExamples/eg2_furniture.jpg", label: "Furniture Style" },
-        { type: "result", src: "/SiteExamples/eg2_output.png", label: "Result" }
+        { type: "input", src: `${storageUrl}/eg2_input.jpg`, label: "Original Room" },
+        { type: "furniture", src: `${storageUrl}/eg2_furniture.jpg`, label: "Furniture Style" },
+        { type: "result", src: `${storageUrl}/eg2_output.png`, label: "Result" }
       ]
     },
     {
       title: "Example 3",
       subtitle: "Elegant Space Styling",
       images: [
-        { type: "input", src: "/SiteExamples/eg3_input.jpg", label: "Original Room" },
-        { type: "furniture", src: "/SiteExamples/eg3_furniture.jpg", label: "Furniture Style" },
-        { type: "result", src: "/SiteExamples/eg3_output.png", label: "Result" }
+        { type: "input", src: `${storageUrl}/eg3_input.jpg`, label: "Original Room" },
+        { type: "furniture", src: `${storageUrl}/eg3_furniture.jpg`, label: "Furniture Style" },
+        { type: "result", src: `${storageUrl}/eg3_output.png`, label: "Result" }
       ]
     }
   ];
