@@ -90,7 +90,7 @@ const Hero = () => {
           transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
           className="block text-sm md:text-base tracking-[0.2em] uppercase mb-4 opacity-90"
         >
-          AI-Powered Interior Design
+          Virtual Design Platform
         </motion.span>
         <motion.h1
           initial={{ opacity: 0, y: 50 }}
@@ -98,7 +98,7 @@ const Hero = () => {
           transition={{ delay: 0.4, duration: 1, ease: "easeOut" }}
           className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium leading-tight mb-8"
         >
-          Generate furniture-staged room images instantly with AI.
+          Generate furniture-staged room images instantly with our Virtual Designer.
         </motion.h1>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -106,7 +106,7 @@ const Hero = () => {
           transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-          <a href="#try-now" className="inline-flex items-center space-x-2 bg-white text-black px-8 py-4 rounded-full hover:bg-stone-100 transition-all duration-300 group font-medium uppercase tracking-wide text-sm">
+          <a href="https://app.furnilabs.net" target="_blank" rel="noopener noreferrer" className="inline-flex items-center space-x-2 bg-white text-black px-8 py-4 rounded-full hover:bg-stone-100 transition-all duration-300 group font-medium uppercase tracking-wide text-sm">
             <span>Try it now</span>
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </a>
@@ -159,7 +159,7 @@ const HowItWorks = () => {
             How it works
           </h2>
           <p className="text-stone-600 text-lg max-w-2xl mx-auto">
-            Transform any room in just three simple steps using our AI technology.
+            Transform any room in just three simple steps using our Virtual Staging Platform.
           </p>
         </motion.div>
 
@@ -222,10 +222,10 @@ const AboutSection = () => {
             className="w-full md:w-1/2"
           >
             <div className="relative aspect-square md:aspect-[4/5] overflow-hidden">
-              <motion.img 
+              <motion.img
                 style={{ y }}
-                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1000&auto=format&fit=crop" 
-                alt="AI Room Transformation" 
+                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1000&auto=format&fit=crop"
+                alt="Virtual Staging Platform - Room Transformation"
                 className="w-full h-[120%] object-cover -mt-[10%]"
               />
               <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-stone-100 -z-10 hidden md:block" />
@@ -370,27 +370,27 @@ const Results = () => {
       title: "Example 1",
       subtitle: "Modern Living Room Transformation",
       images: [
-        { type: "input", src: "/SiteExamples/Example 2/Input/img5 copy.jpg", label: "Original Room" },
-        { type: "furniture", src: "/SiteExamples/Example 2/Furniture/img26 copy.jpg", label: "Furniture Style" },
-        { type: "result", src: "/SiteExamples/Example 2/Output/render-3qyMmoYMpgMtiwvrAt12-v2-1772707518769.png", label: "AI Result" }
+        { type: "input", src: "/SiteExamples/Example%202/Input/img5%20copy.jpg", label: "Original Room" },
+        { type: "furniture", src: "/SiteExamples/Example%202/Furniture/img26%20copy.jpg", label: "Furniture Style" },
+        { type: "result", src: "/SiteExamples/Example%202/Output/render-3qyMmoYMpgMtiwvrAt12-v2-1772707518769.png", label: "Result" }
       ]
     },
     {
       title: "Example 2",
       subtitle: "Contemporary Interior Design",
       images: [
-        { type: "input", src: "/SiteExamples/Example 3/Input/360_F_309153899_e6oWpcNBV44DEx52vikvw9a5XNlw7pVb copy.jpg", label: "Original Room" },
-        { type: "furniture", src: "/SiteExamples/Example 3/Furniture/img88 copy.jpg", label: "Furniture Style" },
-        { type: "result", src: "/SiteExamples/Example 3/Output/render-zFARi8fqif79A8xAEfbQ-v1-1772706990866.png", label: "AI Result" }
+        { type: "input", src: "/SiteExamples/Example%203/Input/360_F_309153899_e6oWpcNBV44DEx52vikvw9a5XNlw7pVb%20copy.jpg", label: "Original Room" },
+        { type: "furniture", src: "/SiteExamples/Example%203/Furniture/img88%20copy.jpg", label: "Furniture Style" },
+        { type: "result", src: "/SiteExamples/Example%203/Output/render-zFARi8fqif79A8xAEfbQ-v1-1772706990866.png", label: "Result" }
       ]
     },
     {
       title: "Example 3",
       subtitle: "Elegant Space Styling",
       images: [
-        { type: "input", src: "/SiteExamples/Example 1/Input/img11 copy.jpg", label: "Original Room" },
-        { type: "furniture", src: "/SiteExamples/Example 1/Furniture/img23 copy.jpg", label: "Furniture Style" },
-        { type: "result", src: "/SiteExamples/Example 3/Output/furnilab-render-1772707227372.png", label: "AI Result" }
+        { type: "input", src: "/SiteExamples/Example%201/Input/img11%20copy.jpg", label: "Original Room" },
+        { type: "furniture", src: "/SiteExamples/Example%201/Furniture/img23%20copy.jpg", label: "Furniture Style" },
+        { type: "result", src: "/SiteExamples/Example%203/Output/furnilab-render-1772707227372.png", label: "Result" }
       ]
     }
   ];
@@ -413,7 +413,7 @@ const Results = () => {
             Transform Spaces in Seconds
           </h2>
           <p className="text-stone-600 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-            See how our AI brings empty rooms to life with stunning furniture visualizations.
+            See how our Virtual Designer brings empty rooms to life with stunning furniture visualizations.
           </p>
         </motion.div>
 
@@ -448,28 +448,21 @@ const Results = () => {
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: false }}
                       transition={{ delay: exIndex * 0.15 + imgIndex * 0.1, duration: 0.5 }}
-                      className="group relative overflow-hidden rounded-xl sm:rounded-2xl flex-1 sm:flex-none shadow-lg hover:shadow-2xl transition-shadow duration-300"
+                      className="group relative overflow-hidden rounded-lg flex-1 sm:flex-none shadow-sm hover:shadow-md transition-shadow duration-300"
                     >
                       <div className="relative w-full pt-[100%] sm:w-48 sm:h-64 md:w-56 md:h-72 lg:w-64 lg:h-80 sm:pt-0">
                         <img
                           src={image.src}
                           alt={image.label}
-                          className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                          className="absolute inset-0 w-full h-full object-cover"
                         />
-                        {/* Gradient Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                       </div>
 
-                      {/* Label Badge */}
-                      <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4">
-                        <span className="inline-block bg-white/95 backdrop-blur-sm text-stone-900 text-xs md:text-sm font-medium px-3 md:px-4 py-1.5 md:py-2 rounded-full">
+                      {/* Minimal Label */}
+                      <div className="absolute bottom-0 left-0 right-0 bg-white/98 p-2 md:p-3">
+                        <span className="text-xs md:text-sm text-stone-700 font-medium">
                           {image.label}
                         </span>
-                      </div>
-
-                      {/* Step Number */}
-                      <div className="absolute top-3 md:top-4 right-3 md:right-4 bg-stone-900/80 backdrop-blur-sm text-white w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-xs md:text-sm font-semibold">
-                        {imgIndex + 1}
                       </div>
                     </motion.div>
 
@@ -509,13 +502,10 @@ const Results = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className="mt-20 md:mt-28 text-center"
+          className="mt-16 md:mt-24 text-center"
         >
-          <p className="text-stone-600 text-sm md:text-base mb-6">
-            Ready to see your furniture in action?
-          </p>
-          <a href="#try-now" className="inline-flex items-center space-x-2 bg-stone-900 hover:bg-stone-800 text-white px-6 md:px-8 py-3 md:py-4 rounded-full transition-colors duration-300 group text-sm md:text-base font-medium">
-            <span>Try FurniLabs Now</span>
+          <a href="https://app.furnilabs.net" target="_blank" rel="noopener noreferrer" className="inline-flex items-center space-x-2 bg-stone-900 hover:bg-stone-800 text-white px-6 md:px-8 py-3 md:py-4 rounded-full transition-colors duration-300 group text-sm md:text-base font-medium">
+            <span>Try it now</span>
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </a>
         </motion.div>
@@ -599,7 +589,7 @@ const WhyChooseUs = () => {
           transition={{ delay: 0.6 }}
           className="mt-16 text-center"
         >
-          <a href="#try-now" className="inline-flex items-center space-x-2 bg-stone-900 text-white px-10 py-4 rounded-full hover:bg-stone-700 transition-colors duration-300 group font-medium uppercase tracking-wide text-sm">
+          <a href="https://app.furnilabs.net" target="_blank" rel="noopener noreferrer" className="inline-flex items-center space-x-2 bg-stone-900 text-white px-10 py-4 rounded-full hover:bg-stone-700 transition-colors duration-300 group font-medium uppercase tracking-wide text-sm">
             <span>Get started now</span>
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </a>
@@ -624,7 +614,7 @@ const CTASection = () => {
             Ready to transform your furniture business?
           </h2>
           <p className="text-xl text-stone-300 mb-12 leading-relaxed">
-            Start generating stunning AI-powered room visualizations today. No credit card required.
+            Start generating stunning room visualizations today. No credit card required.
           </p>
           <motion.a
             initial={{ opacity: 0, y: 20 }}
@@ -822,7 +812,7 @@ const Marquee = () => {
       >
         {[...Array(10)].map((_, i) => (
           <span key={i} className="mx-8 text-sm font-medium tracking-widest uppercase">
-            AI-Powered Interior Design • Visualize Your Dream Space • Instant Transformations • 
+            Virtual Designer • Visualize Your Dream Space • Instant Transformations •
           </span>
         ))}
       </motion.div>
@@ -904,3 +894,4 @@ export default function App() {
     </div>
   );
 }
+
