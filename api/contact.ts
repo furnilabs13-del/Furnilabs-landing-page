@@ -48,7 +48,7 @@ async function appendToSheet(rowData: (string | number)[]) {
   const newRow = [serialNumber, ...rowData];
   await sheets.spreadsheets.values.update({
     spreadsheetId: SHEET_ID,
-    range: `${SHEET_NAME}!A${nextRow}:H${nextRow}`,
+    range: `${SHEET_NAME}!A${nextRow}:I${nextRow}`,
     valueInputOption: 'USER_ENTERED',
     requestBody: { values: [newRow] },
   });
