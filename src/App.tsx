@@ -364,33 +364,172 @@ const UseCases = () => {
   );
 };
 
+const ResultsCarousel = ({ example, exIndex }: { example: any, exIndex: number }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextImage = () => {
+    setCurrentIndex((prev) => (prev + 1) % example.images.length);
+  };
+
+  const prevImage = () => {
+    setCurrentIndex((prev) => (prev - 1 + example.images.length) % example.images.length);
+  };
+
+  return (
+    <motion.div
+      key={exIndex}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: false, margin: "-100px" }}
+      transition={{ duration: 0.6, delay: exIndex * 0.15 }}
+      className="space-y-6 md:space-y-8"
+    >
+      {/* Example Title - Smaller, Less Bold */}
+      <div className="text-center space-y-1">
+        <h3 className="text-lg md:text-xl font-serif font-normal text-stone-900">
+          {example.title}
+        </h3>
+        <p className="text-stone-500 text-xs md:text-sm">
+          {example.subtitle}
+        </p>
+      </div>
+
+      {/* Desktop Layout - All Images */}
+      <div className="hidden sm:flex flex-row items-center justify-center gap-4 md:gap-6 lg:gap-8">
+        {example.images.map((image: any, imgIndex: number) => (
+          <div key={imgIndex} className="flex items-center gap-4 md:gap-6">
+            {/* Image Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: false }}
+              transition={{ delay: exIndex * 0.15 + imgIndex * 0.1, duration: 0.5 }}
+              className="group relative overflow-hidden rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
+            >
+              <div className="relative w-48 h-64 md:w-56 md:h-72 lg:w-64 lg:h-80">
+                <img
+                  src={image.src}
+                  alt={image.label}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Minimal Label */}
+              <div className="absolute bottom-0 left-0 right-0 bg-white/98 p-2 md:p-3">
+                <span className="text-xs md:text-sm text-stone-700 font-medium">
+                  {image.label}
+                </span>
+              </div>
+            </motion.div>
+
+            {/* Arrow Separator */}
+            {imgIndex < example.images.length - 1 && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: false }}
+                transition={{ delay: exIndex * 0.15 + imgIndex * 0.1 + 0.08, duration: 0.5 }}
+                className="flex-shrink-0"
+              >
+                <div className="bg-stone-200 hover:bg-stone-300 transition-colors duration-300 rounded-full p-2.5 md:p-3">
+                  <ArrowRight size={18} className="text-stone-700" strokeWidth={2.5} />
+                </div>
+              </motion.div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* Mobile Carousel - Single Image with Navigation */}
+      <div className="sm:hidden flex flex-col items-center gap-4">
+        <motion.div
+          key={currentIndex}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+          className="relative overflow-hidden rounded-lg shadow-sm w-full"
+        >
+          <div className="relative w-full pt-[100%]">
+            <img
+              src={example.images[currentIndex].src}
+              alt={example.images[currentIndex].label}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </div>
+
+          {/* Minimal Label */}
+          <div className="absolute bottom-0 left-0 right-0 bg-white/98 p-3">
+            <span className="text-xs text-stone-700 font-medium">
+              {example.images[currentIndex].label}
+            </span>
+          </div>
+        </motion.div>
+
+        {/* Navigation Controls */}
+        <div className="flex items-center justify-center gap-4">
+          <button
+            onClick={prevImage}
+            className="bg-stone-200 hover:bg-stone-300 transition-colors rounded-full p-2"
+          >
+            <ArrowRight size={16} className="text-stone-700 rotate-180" />
+          </button>
+
+          <div className="flex gap-1.5">
+            {example.images.map((_: any, idx: number) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentIndex(idx)}
+                className={`w-2 h-2 rounded-full transition-colors ${
+                  idx === currentIndex ? 'bg-stone-900' : 'bg-stone-300'
+                }`}
+              />
+            ))}
+          </div>
+
+          <button
+            onClick={nextImage}
+            className="bg-stone-200 hover:bg-stone-300 transition-colors rounded-full p-2"
+          >
+            <ArrowRight size={16} className="text-stone-700" />
+          </button>
+        </div>
+
+        {/* Image Counter */}
+        <p className="text-xs text-stone-500">
+          {currentIndex + 1} / {example.images.length}
+        </p>
+      </div>
+    </motion.div>
+  );
+};
+
 const Results = () => {
   const examples = [
     {
       title: "Example 1",
       subtitle: "Modern Living Room Transformation",
       images: [
-        { type: "input", src: "/SiteExamples/Example%202/Input/img5%20copy.jpg", label: "Original Room" },
-        { type: "furniture", src: "/SiteExamples/Example%202/Furniture/img26%20copy.jpg", label: "Furniture Style" },
-        { type: "result", src: "/SiteExamples/Example%202/Output/render-3qyMmoYMpgMtiwvrAt12-v2-1772707518769.png", label: "Result" }
+        { type: "input", src: "/SiteExamples/Example 2/Input/img5copy.jpg", label: "Original Room" },
+        { type: "furniture", src: "/SiteExamples/Example 2/Furniture/img26copy.jpg", label: "Furniture Style" },
+        { type: "result", src: "/SiteExamples/Example 2/Output/render-3qyMmoYMpgMtiwvrAt12-v2-1772707518769.png", label: "Result" }
       ]
     },
     {
       title: "Example 2",
       subtitle: "Contemporary Interior Design",
       images: [
-        { type: "input", src: "/SiteExamples/Example%203/Input/360_F_309153899_e6oWpcNBV44DEx52vikvw9a5XNlw7pVb%20copy.jpg", label: "Original Room" },
-        { type: "furniture", src: "/SiteExamples/Example%203/Furniture/img88%20copy.jpg", label: "Furniture Style" },
-        { type: "result", src: "/SiteExamples/Example%203/Output/render-zFARi8fqif79A8xAEfbQ-v1-1772706990866.png", label: "Result" }
+        { type: "input", src: "/SiteExamples/Example 3/Input/img309copy.jpg", label: "Original Room" },
+        { type: "furniture", src: "/SiteExamples/Example 3/Furniture/img88copy.jpg", label: "Furniture Style" },
+        { type: "result", src: "/SiteExamples/Example 3/Output/render-zFARi8fqif79A8xAEfbQ-v1-1772706990866.png", label: "Result" }
       ]
     },
     {
       title: "Example 3",
       subtitle: "Elegant Space Styling",
       images: [
-        { type: "input", src: "/SiteExamples/Example%201/Input/img11%20copy.jpg", label: "Original Room" },
-        { type: "furniture", src: "/SiteExamples/Example%201/Furniture/img23%20copy.jpg", label: "Furniture Style" },
-        { type: "result", src: "/SiteExamples/Example%203/Output/furnilab-render-1772707227372.png", label: "Result" }
+        { type: "input", src: "/SiteExamples/Example 1/Input/img11copy.jpg", label: "Original Room" },
+        { type: "furniture", src: "/SiteExamples/Example 1/Furniture/img23copy.jpg", label: "Furniture Style" },
+        { type: "result", src: "/SiteExamples/Example 3/Output/furnilab-render-1772707227372.png", label: "Result" }
       ]
     }
   ];
@@ -420,79 +559,7 @@ const Results = () => {
         {/* Examples Grid */}
         <div className="space-y-16 md:space-y-24">
           {examples.map((example, exIndex) => (
-            <motion.div
-              key={exIndex}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: exIndex * 0.15 }}
-              className="space-y-6 md:space-y-8"
-            >
-              {/* Example Title */}
-              <div className="text-center space-y-2">
-                <h3 className="text-2xl md:text-3xl font-serif font-medium text-stone-900">
-                  {example.title}
-                </h3>
-                <p className="text-stone-500 text-sm md:text-base">
-                  {example.subtitle}
-                </p>
-              </div>
-
-              {/* Image Carousel - Responsive Layout */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8">
-                {example.images.map((image, imgIndex) => (
-                  <div key={imgIndex} className="flex items-center w-full sm:w-auto gap-3 sm:gap-4 md:gap-6">
-                    {/* Image Card */}
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: false }}
-                      transition={{ delay: exIndex * 0.15 + imgIndex * 0.1, duration: 0.5 }}
-                      className="group relative overflow-hidden rounded-lg flex-1 sm:flex-none shadow-sm hover:shadow-md transition-shadow duration-300"
-                    >
-                      <div className="relative w-full pt-[100%] sm:w-48 sm:h-64 md:w-56 md:h-72 lg:w-64 lg:h-80 sm:pt-0">
-                        <img
-                          src={image.src}
-                          alt={image.label}
-                          className="absolute inset-0 w-full h-full object-cover"
-                        />
-                      </div>
-
-                      {/* Minimal Label */}
-                      <div className="absolute bottom-0 left-0 right-0 bg-white/98 p-2 md:p-3">
-                        <span className="text-xs md:text-sm text-stone-700 font-medium">
-                          {image.label}
-                        </span>
-                      </div>
-                    </motion.div>
-
-                    {/* Arrow Separator */}
-                    {imgIndex < example.images.length - 1 && (
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: false }}
-                        transition={{ delay: exIndex * 0.15 + imgIndex * 0.1 + 0.08, duration: 0.5 }}
-                        className="flex-shrink-0 hidden sm:flex items-center justify-center"
-                      >
-                        <div className="bg-stone-200 hover:bg-stone-300 transition-colors duration-300 rounded-full p-2.5 md:p-3">
-                          <ArrowRight size={18} className="text-stone-700 md:block" strokeWidth={2.5} />
-                        </div>
-                      </motion.div>
-                    )}
-
-                    {/* Mobile Arrow - Below Image */}
-                    {imgIndex < example.images.length - 1 && (
-                      <div className="sm:hidden w-full flex justify-center py-2">
-                        <div className="bg-stone-200 rounded-full p-2 rotate-90">
-                          <ArrowRight size={16} className="text-stone-700" strokeWidth={2.5} />
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+            <ResultsCarousel key={exIndex} example={example} exIndex={exIndex} />
           ))}
         </div>
 
@@ -894,4 +961,5 @@ export default function App() {
     </div>
   );
 }
+
 
