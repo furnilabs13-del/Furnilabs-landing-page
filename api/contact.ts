@@ -107,7 +107,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       name,
       phone || '',
       email,
-      '',               // Store Name — not collected in form
+      '', // Store Name — not collected in form
+      'Website'         //Default- lead from website
       'not converted',  // Status default — matches dropdown option exactly
       message,          // Reason from message
       '',               // Revenue — filled manually
